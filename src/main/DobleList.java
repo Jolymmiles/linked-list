@@ -29,6 +29,7 @@ public class DobleList<E> {
             System.arraycopy(elementData, size+1, elementData, size,
                     numMoved);
         elementData[--size] = null;
+        down();
     }
 
     public int getSize(){
