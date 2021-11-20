@@ -38,8 +38,6 @@ public class DobleList<E> {
 
     @Override
     public String toString() {
-        return "DobleList{" +
-                "elementData=" + Arrays.toString(elementData) +
-                '}';
+        return Arrays.toString(elementData);
     }
 }

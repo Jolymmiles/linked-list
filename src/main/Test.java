@@ -4,6 +4,7 @@ public class Test {
         array.push("cat");
         array.push("dog");
         array.pop();
+        array.push("dog");
         System.out.println(array);
     }
 }
