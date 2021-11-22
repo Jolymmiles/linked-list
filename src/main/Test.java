@@ -1,10 +1,13 @@
 public class Test {
     public static void main(String[] args) {
-        DobleList<String> array = new DobleList<>();
-        array.push("cat");
-        array.push("dog");
+        DobleList<Integer> array = new DobleList<>();
+        array.push(123);
+        array.push(4324);
+        array.shift();
+        array.push(345465);
         array.pop();
-        array.push("dog");
+
+
         System.out.println(array);
     }
 }
