@@ -1,13 +1,9 @@
-import java.util.Arrays;
-
 public class DobleList<E> {
-    Object[] elementData;
-    private int size;
-    Element<E> first;
-    Element<E> last;
+    private Element<E> first;
+    private Element<E> last;
 
     private static class Element<E> {
-        private E data;
+        final private E data;
         private Element<E> prev;
         private Element<E> next;
 
@@ -24,56 +20,63 @@ public class DobleList<E> {
         }
     }
 
-    public DobleList(){
-        this.elementData = new Object[0];
-    }
-
-    //Увеличивает массив на 1
-    private void up() {
-        elementData = Arrays.copyOf(elementData, elementData.length+1);
-    }
-
-    //Уменьшает массив на 1
-    private void down() {
-        elementData = Arrays.copyOf(elementData, elementData.length-1);
-    }
-
+    /**
+     * Adding object
+     * @param data - E data object
+     *
+     */
     //Добавляет элемент
-    public void push(E element) {
-        up();
-        final Element<E> f = first;
-        final Element<E> newElem = new Element<>(null, element, f);
-        first = newElem;
-        if (f == null)
-            last = newElem;
-        else
-            f.prev = newElem;
-        elementData[size++] = newElem;
-    }
+    public void push(E data){
+        if (first == null){
+            Element<E> newElement = new Element<>(null, data, null);
+            first = newElement;
+            last = newElement;
+        } else {
+            Element<E> newElement = new Element<>(last, data, null);
+            if (first.next == null) {
+                first.next = newElement;
+            }
+            if (last.next == null) {
+                last.next = newElement;
+            }
+            last = newElement;
 
+        }
+    }
+    /**
+     * Delete last object
+     *
+     *
+     */
     //Удаляет последний элемент
-    public void pop() {
-        int numMoved = size - elementData.length-1 - 1;
-        if (numMoved > 0)
-            System.arraycopy(elementData, size+1, elementData, size,
-                    numMoved);
-        elementData[--size] = null;
-        down();
+    public void pop(){
+        last = last.prev;
+        last.next = null;
+
+
     }
 
+    /**
+     * Delete first object
+     *
+     *
+     */
     //Удаляет первый элемент
-    public void shift() {
-        elementData[0] = null;
-        elementData = Arrays.copyOfRange(elementData, 1,elementData.length);
-        --size;
+    public void shift(){
+        first = first.next;
+        first.prev = null;
+
     }
 
-    public int getSize() {
-        return size;
+    /**
+     * Adding object before first element
+     * @param data - E data object
+     *
+     */
+    public void unshift(E data){
+        Element<E> newElement = new Element<>(null, data, first);
+        first.prev = newElement;
+        first = newElement;
     }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(elementData);
-    }
 }

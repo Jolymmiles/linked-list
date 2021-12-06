@@ -3,11 +3,9 @@ public class Test {
         DobleList<Integer> array = new DobleList<>();
         array.push(123);
         array.push(4324);
-        array.shift();
-        array.push(345465);
+        array.push(735);
+        array.push(675);
         array.pop();
-
-
-        System.out.println(array);
+        array.unshift(666);
     }
 }
