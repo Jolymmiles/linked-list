@@ -79,4 +79,18 @@ public class DobleList<E> {
         first = newElement;
     }
 
+    /**
+     * Get first element
+     */
+    public Element<E> getFirst(){
+        return first;
+    }
+    /**
+     * Get last element
+     */
+    public Element<E> getLast(){
+        return last;
+    }
+
+
 }
